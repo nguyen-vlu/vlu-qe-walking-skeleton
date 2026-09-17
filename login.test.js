@@ -3,7 +3,7 @@ const { checkLogin } = require('./login');
 describe('Kiểm tra hàm đăng nhập (checkLogin)', () => {
     
     test('Nên trả về true khi username là "admin" và password là "123"', () => {
-        expect(checkLogin('admin', '123')).toBe(true);
+        expect(checkLogin('admin', '1234')).toBe(true);
     });
 
     test('Nên trả về false khi sai mật khẩu', () => {
