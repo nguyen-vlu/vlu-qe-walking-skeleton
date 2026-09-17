@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Đăng Nhập</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        #message { margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Đăng Nhập Hệ Thống</h2>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Đăng nhập</button>
+    </form>
+
+    <div id="message"></div>
+
+    <!-- Nhúng file auth.js -->
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn tải lại trang
+            
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const messageEl = document.getElementById('message');
+
+            // Gọi hàm từ file auth.js
+            if (checkLogin(user, pass)) {
+                messageEl.textContent = "Đăng nhập thành công!";
+                messageEl.style.color = "green";
+            } else {
+                messageEl.textContent = "Sai tên đăng nhập hoặc mật khẩu!";
+                messageEl.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>
